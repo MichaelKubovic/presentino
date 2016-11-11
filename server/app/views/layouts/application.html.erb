@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Presentino</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag "application.css" %>
+    <%= javascript_include_tag "application.js" %>
+  </head>
+
+  <body>
+    <% if notice.present? or alert.present? %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <% end %>
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-items">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="<%= root_path %>">Presentino</a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-items">
+          <ul class="nav navbar-nav">
+            <li class="<%= current_page?(holidays_path) ? 'active' : ''%>"><a href="<%= holidays_path %>">Holidays</a></li>
+            <li class="<%= current_page?(presents_path) ? 'active' : ''%>"><a href="<%= presents_path %>">Presents</a></li>
+            <li class="<%= current_page?(users_path) ? 'active' : ''%>"><a href="<%= users_path %>">Users</a></li>
+            <li></li>
+          </ul>
+          <button href="" class="btn btn-danger navbar-btn navbar-right">Log out</button>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <%= yield %>
+    </div>
+  </body>
+</html>

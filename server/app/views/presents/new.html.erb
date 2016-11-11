@@ -1,0 +1,36 @@
+<%= form_tag presents_path, class: 'form-horizontal' %>
+  <div class="form-group">
+    <div class="col-xs-12 col-sm-8">
+      <label>Label</label>
+      <input name="label" type="text" class="form-control" value="<%= @present.label %>">
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <label>Price</label>
+      <input name="price" type="text" class="form-control" value="<%= @present.price %>">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-xs-12">
+      <label>Description</label>
+      <textarea name="description" cols="30" rows="5" class="form-control"><%= @present.description %></textarea>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-xs-12 col-sm-4">
+      <label>Sex</label>
+      <select name="sex" class="form-control">
+        <option value="m">Male</option>
+        <option value="f">Female</option>
+        <option value="u">Unisex</option>
+      </select>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <label>Age from</label>
+      <input name="age_from" type="text" class="form-control" value="<%= @present.age_from %>">
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <label>Age to</label>
+      <input name="age_to" type="text" class="form-control" value="<%= @present.age_to %>">
+    </div>
+  </div>
+</form>
