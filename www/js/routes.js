@@ -10,7 +10,7 @@ angular.module('app.routes', [])
     
   
 
-      .state('tabsController', {
+  .state('tabsController', {
     url: '/tabs',
     templateUrl: 'templates/tabsController.html',
     abstract:true
@@ -40,6 +40,12 @@ angular.module('app.routes', [])
     url: '/search-results',
     templateUrl: 'templates/searchResults.html',
     controller: 'searchResultsCtrl'
+  })
+
+  .state('showPresent', {
+    url: '/show-present', // TODO: add {id} param
+    templateUrl: 'templates/showPresent.html',
+    controller: 'showPresentCtrl'
   })
 
 $urlRouterProvider.otherwise('/tabs/search')
