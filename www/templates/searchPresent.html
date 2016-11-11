@@ -1,17 +1,46 @@
 <ion-view title="Search present" id="page5">
   <ion-content padding="true" class="outer-content">
-    <ion-list>
+    <div class="list">
+      <label class="item item-input item-stacked-label item-select">
+        <span class="input-label">Holiday</span>
+        <select ng-model="search.holiday">
+          <option value="">-- Select --</option>
+          <option value="birthday">Birthday</option>
+          <option value="nameday">Nameday</option>
+          <option value="wedding">Wedding</option>
+        </select>
+      </label>
 
-  <ion-item>
-    <ion-label stacked>Username</ion-label>
-    <ion-input type="text"></ion-input>
-  </ion-item>
+      <!-- age -->
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Age</span>
+        <input type="tel" ng-model="search.age" placeholder="21">
+      </label>
 
-  <ion-item>
-    <ion-label stacked>Password</ion-label>
-    <ion-input type="password"></ion-input>
-  </ion-item>
+      <!-- gender -->
+      <label class="item item-input item-stacked-label item-select">
+        <span class="input-label">Gender</span>
+        <select ng-model="search.gender">
+          <option value="">-- Select --</option>
+          <option value="man">Man</option>
+          <option value="woman">Woman</option>
+        </select>
+      </label>
 
-</ion-list>
+      <!-- max price -->
+      <!-- <label class="item item-input item-stacked-label range range-positive">
+        <span class="input-label">Max price: {{ form.volume }}</span>
+        <input type="range" name="volume" min="0" max="1000" value="50">
+      </label> -->
+
+      <button class="button button-block button-positive" type="submit" ng-disabled="form.submitting" ng-click="submit(search)">
+        {{ form.submitting ? 'Searching presents ...' : 'Search presents' }}
+      </button>
+      
+      <h2>debug</h2>
+      <pre>search = {{ search | json }}</pre>
+      <pre>messages = {{ messages | json }}</pre>
+
+    </div>
   </ion-content>
 </ion-view>
