@@ -6,6 +6,8 @@ class HolidaysController < ApplicationController
   end
 
   def api_index
+    @holidays = Holiday.all
+    render json: @holidays
   end
 
   def show
