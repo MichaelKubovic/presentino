@@ -16,14 +16,10 @@ angular.module('app.routes', [])
     abstract:true
   })
 
-  .state('tabsController.searchPresent', {
+  .state('searchPresent', {
     url: '/search',
-    views: {
-      'tab2': {
-        templateUrl: 'templates/searchPresent.html',
-        controller: 'searchPresentCtrl'
-      }
-    }
+    templateUrl: 'templates/searchPresent.html',
+    controller: 'searchPresentCtrl'
   })
 
   .state('tabsController.history', {
@@ -37,7 +33,13 @@ angular.module('app.routes', [])
   })
 
   .state('searchResults', {
+    cache: false,
     url: '/search-results',
+    params: {
+      holiday: null,
+      gender: null,
+      age: null,
+    },
     templateUrl: 'templates/searchResults.html',
     controller: 'searchResultsCtrl'
   })
@@ -48,7 +50,7 @@ angular.module('app.routes', [])
     controller: 'showPresentCtrl'
   })
 
-$urlRouterProvider.otherwise('/tabs/search')
+$urlRouterProvider.otherwise('/search')
 
   
 

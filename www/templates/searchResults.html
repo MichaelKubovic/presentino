@@ -1,36 +1,19 @@
 <ion-view title="Search results" id="search-results">
+	<ion-nav-bar class="bar-stable">
+		<ion-nav-buttons side="left">
+		  <button class="button back-button buttons button-clear header-item" ng-click="goToSearch()">
+		    <i class="icon ion-ios-arrow-back"></i> Search
+		  </button>
+		</ion-nav-buttons> 
+	</ion-nav-bar>
   <ion-content padding="true" class="has-header">
     <ion-list id="searchResults-list1">
-      <a href="#/show/1" class="item-holder">
+      <a ng-repeat="present in presents" href="{{ '#/show/'+present.id }}" class="item-holder">
 	      <ion-item class="item-thumbnail-left" id="searchResults-list-item1">
-	        <img src="img/GIY8dKoRfGnjxbjCKSXu_gift-05.jpg" alt="present image not found">
-	        <h2>Some example gift</h2>
-	        <p>Example gift description</p>
-	        <strong class="text-muted item-price">&euro; 9,99</strong>
-	      </ion-item>
-      </a>
-      <a href="#/show/2" class="item-holder">
-	      <ion-item class="item-thumbnail-left" id="searchResults-list-item1">
-	        <img src="img/GIY8dKoRfGnjxbjCKSXu_gift-05.jpg" alt="present image not found">
-	        <h2>Some example gift</h2>
-	        <p>Example gift description</p>
-	        <strong class="text-muted item-price">&euro; 9,99</strong>
-	      </ion-item>
-      </a>
-      <a href="#/show/3" class="item-holder">
-	      <ion-item class="item-thumbnail-left" id="searchResults-list-item1">
-	        <img src="img/GIY8dKoRfGnjxbjCKSXu_gift-05.jpg" alt="present image not found">
-	        <h2>Some example gift</h2>
-	        <p>Example gift description</p>
-	        <strong class="text-muted item-price">&euro; 9,99</strong>
-	      </ion-item>
-      </a>
-      <a href="#/show/4" class="item-holder">
-	      <ion-item class="item-thumbnail-left" id="searchResults-list-item1">
-	        <img src="img/GIY8dKoRfGnjxbjCKSXu_gift-05.jpg" alt="present image not found">
-	        <h2>Some example gift</h2>
-	        <p>Example gift description</p>
-	        <strong class="text-muted item-price">&euro; 9,99</strong>
+	        <img src="{{ present.image || 'img/unknown_present.jpg' }}" alt="present image not found">
+	        <h2>{{ present.label }}</h2>
+	        <p>{{ present.description }}</p>
+	        <strong class="text-muted item-price">{{ present.price | currency:"&dollar;":2 }}</strong>
 	      </ion-item>
       </a>
     </ion-list>

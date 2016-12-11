@@ -1,46 +1,49 @@
 <ion-view title="Search present" id="page5">
   <ion-content padding="true" class="outer-content">
-    <div class="list">
-      <label class="item item-input item-stacked-label item-select">
-        <span class="input-label">Holiday</span>
-        <select ng-model="search.holiday">
-          <option value="">-- Select --</option>
-          <option value="birthday">Birthday</option>
-          <option value="nameday">Nameday</option>
-          <option value="wedding">Wedding</option>
-        </select>
-      </label>
+    <form name="searchForm" novalidate="" ng-submit="submit(searchForm)">
+      <div class="list">
+        <label class="item item-input item-stacked-label item-select" ng-class="{'has-error': (searchForm.$submitted && searchForm.holiday.$invalid)}">
+          <span class="input-label">Holiday</span>
+          <select required ng-model="search.holiday" name="holiday">
+            <option ng-repeat="_holiday in data.holidays" value="{{ _holiday.id }}">{{ _holiday.label }}</option>
+          </select>
+          <p ng-show="searchForm.$submitted && searchForm.holiday.$invalid" class="form-error">You have to select valid holiday</p>
+        </label>
 
-      <!-- age -->
-      <label class="item item-input item-stacked-label">
-        <span class="input-label">Age</span>
-        <input type="tel" ng-model="search.age" placeholder="21">
-      </label>
+        <!-- age -->
+        <label class="item item-input item-stacked-label" ng-class="{'has-error': (searchForm.$submitted && searchForm.age.$invalid)}">
+          <span class="input-label">Age</span>
+          <!-- Hopefully nobody will live longer than 140 yrs -->
+          <input required type="number" ng-model="search.age" name="age" placeholder="21" min="1" max="140">
+          <p ng-show="searchForm.$submitted && searchForm.age.$invalid" class="form-error">You have to enter valid age</p>
+        </label>
 
-      <!-- gender -->
-      <label class="item item-input item-stacked-label item-select">
-        <span class="input-label">Gender</span>
-        <select ng-model="search.gender">
-          <option value="">-- Select --</option>
-          <option value="man">Man</option>
-          <option value="woman">Woman</option>
-        </select>
-      </label>
+        <!-- gender -->
+        <label class="item item-input item-stacked-label item-select" ng-class="{'has-error': (searchForm.$submitted && searchForm.gender.$invalid)}">
+          <span class="input-label">
+          <span class="input-label">Gender</span>
+          <select required ng-model="search.gender" name="gender">
+            <option value="">-- Select --</option>
+            <option value="man">Man</option>
+            <option value="woman">Woman</option>
+          </select>
+          <p ng-show="searchForm.$submitted && searchForm.gender.$invalid" class="form-error">You have to select valid gender</p>
+        </label>
 
-      <!-- max price -->
-      <!-- <label class="item item-input item-stacked-label range range-positive">
-        <span class="input-label">Max price: {{ form.volume }}</span>
-        <input type="range" name="volume" min="0" max="1000" value="50">
-      </label> -->
+        <!-- max price -->
+        <!-- <label class="item item-input item-stacked-label range range-positive">
+          <span class="input-label">Max price: {{ form.volume }}</span>
+          <input type="range" name="volume" min="0" max="1000" value="50">
+        </label> -->
 
-      <button class="button button-block button-positive" type="submit" ng-disabled="form.submitting" ng-click="submit(search)">
-        {{ form.submitting ? 'Searching for presents ...' : 'Search presents' }}
-      </button>
-      
-      <h2>debug</h2>
-      <pre>search = {{ search | json }}</pre>
-      <pre>messages = {{ messages | json }}</pre>
+        <button class="button button-block button-positive" type="submit">
+          {{ form.submitting ? 'Searching for presents ...' : 'Search presents' }}
+        </button>
+        <!-- 
+        <pre>form = {{ search | json }}</pre>
+        <pre>data = {{ data | json }}</pre> -->
 
-    </div>
+      </div>
+    </form>
   </ion-content>
 </ion-view>

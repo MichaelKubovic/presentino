@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives','app.services',])
+angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives','app.services', 'ngMessages'])
 
 .config(function($ionicConfigProvider, $sceDelegateProvider){
   
@@ -27,4 +27,13 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives
       StatusBar.styleDefault();
     }
   });
+})
+
+.filter('basedomain', function() {
+  return function(input) {
+    var regex = /(?:http:\/\/)?(?:www.)?([a-zA-Z.]+\.[a-zA-Z.]+)(?:.*)/g
+    var match = regex.exec(input)
+    if (!match) return input
+    return match[1]
+  }
 })
