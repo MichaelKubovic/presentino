@@ -18,9 +18,7 @@ function ($scope, $stateParams, $state, $ionicHistory) {
 	$scope.submit = function(search) {
 		$scope.form.submitting = true;
 		$scope.messages.push('Form has been submitted');
-		setTimeout(function() {
-			$state.go('searchResults', {relative: $state.$current});
-		}, 2000)
+		$state.go('searchResults', {relative: $state.$current});
 	}
 
 }])
@@ -43,5 +41,7 @@ function ($scope, $stateParams) {
 
 .controller('showPresentCtrl', ['$scope', '$stateParams', 
 function($scope, $stateParams) {
-	console.log('show');
+	$scope.present = {
+		id: $stateParams.id
+	}
 }])

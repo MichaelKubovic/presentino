@@ -9,3 +9,31 @@
 	margin: 0 !important;
 	height: 34px;
 }
+a.item-holder,
+a.item-holder * {
+	text-decoration: none;
+}
+.item-price {
+	display: block;
+	margin-top: 10px;
+	font-size: 16px;
+}
+.show-present-image {
+	width: 100%;
+	max-height: 300px;
+	font-size: 0;
+	box-shadow: 0px 0px 8px rgba(0,0,0,.7);
+}
+.show-present-image img {
+	max-width: 100%;
+	max-height: 100%;
+	margin: 0;
+	padding: 0;
+	vertical-align: middle;
+}
+.hr-line-dashed {
+	clear: both;
+	margin: 8px 0;
+	height: 0;
+	border-bottom: 1px dashed #999;
+}

@@ -43,7 +43,7 @@ angular.module('app.routes', [])
   })
 
   .state('showPresent', {
-    url: '/show-present', // TODO: add {id} param
+    url: '/show/:id', // TODO: add {id} param
     templateUrl: 'templates/showPresent.html',
     controller: 'showPresentCtrl'
   })
