@@ -10,13 +10,23 @@ class PresentsController < ApplicationController
   end
 
   def api_index
-    @presents = Present.all
-    render json: @presents
+    query = Present.order('updated_at DESC')
+    # Nested if ensures that the query always hits an index.
+    if params[:sex].present?
+      query = query.where(sex: params[:sex])
+      if params[:age_from].present?
+        query = query.where('age_from <= ?', params[:age_from])
+        if params[:age_to].present?
+          query = query.where('age_to <= ?', params[:age_to])
+        end
+      end
+    end
+    render json: query.all
   end
 
   def api_show
     @present = Present.find(params[:id])
-    render json: @present
+    render json: @present.as_json.merge({present_stores: @present.present_stores})
   end
 
   def new

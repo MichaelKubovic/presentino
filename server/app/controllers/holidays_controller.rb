@@ -6,6 +6,8 @@ class HolidaysController < ApplicationController
   end
 
   def api_index
+    @holidays = Holiday.order('updated_at DESC').all
+    render json: @holidays
   end
 
   def show
