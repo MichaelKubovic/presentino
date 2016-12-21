@@ -1,1 +1,96 @@
-edit.html.erb
+<%= form_tag present_path(@present.id), class: 'form-horizontal', method: 'put' %>
+  <div class="form-group">
+    <div class="col-xs-12 col-sm-12">
+      <label>Label</label>
+      <input name="label" type="text" class="form-control" value="<%= @present.label %>">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-xs-12">
+      <label>Description</label>
+      <textarea name="description" cols="30" rows="5" class="form-control"><%= @present.description %></textarea>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-xs-12 col-sm-4">
+      <label>Sex</label>
+      <select name="sex" class="form-control">
+        <option value="m">Male</option>
+        <option value="f">Female</option>
+        <option value="u">Unisex</option>
+      </select>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <label>Age from</label>
+      <input name="age_from" type="number" class="form-control" value="<%= @present.age_from %>">
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <label>Age to</label>
+      <input name="age_to" type="number" class="form-control" value="<%= @present.age_to %>">
+    </div>
+  </div>
+  <!-- holidays -->
+  <label>Holidays</label>
+  <div class="form-group">
+    <% @holidays.each do |holiday| %>
+      <div class="col-xs-12 col-sm-3">
+        <input type="checkbox" name="holidays[]" value="<%= holiday.id %>">
+        <span><%= holiday.label %></span>
+      </div>
+    <% end %>
+  </div>
+  <div class="form-group">
+    <div class="col-xs-12">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Shop name</th>
+            <th>Link</th>
+            <th>Price</th>
+            <th class="text-right">
+              <button type="button" id="add-present-store" class="btn btn-success">Add shop</button>
+            </th>
+          </tr>
+        </thead>
+        <tbody id="present-stores">
+          <% @present.present_stores.each do |store| %>
+            <tr>
+              <td>
+                <input type="text" name="present_stores[][name]" value="<%= store.name %>" class="form-control" placeholder="Shop name">
+              </td>
+              <td>
+                <input type="text" name="present_stores[][url]" value="<%= store.url %>" class="form-control" placeholder="Link">
+              </td>
+              <td>
+                <input type="number" name="present_stores[][price]" value="<%= store.price %>" class="form-control" placeholder="Price">
+              </td>
+              <td class="text-right">
+                <button type="button" class="btn btn-danger remove-present-store">Remove</button>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-xs-12">
+      <button class="btn btn-primary pull-right">Edit</button>
+    </div>
+  </div>
+</form>
+<script>
+  presentLinkTemplate = '<tr><td><input type="text" name="present_stores[][name]" class="form-control" placeholder="Shop name"></td><td><input type="text" name="present_stores[][url]" class="form-control" placeholder="Link"></td><td><input type="number" name="present_stores[][price]" class="form-control" placeholder="Price"></td><td class="text-right"><button type="button" class="btn btn-danger remove-present-store">Remove</button></td></tr>'
+
+  $(document).ready(function() {
+    $('#add-present-store').click(function(event) {
+      event.preventDefault();
+      $('#present-stores').append(presentLinkTemplate)
+    });
+
+    $(document).on('click', '.remove-present-store', function(event) {
+      event.preventDefault();
+      $(this).parent().parent().remove()
+    });
+  })
+</script>

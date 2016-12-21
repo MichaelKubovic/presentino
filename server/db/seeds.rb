@@ -6,5 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create(first_name: 'Admin', last_name: 'Admin', email: 'admin@presents.com', password: 'password')
-User.create(first_name: 'Marek', last_name: 'Galovic', email: 'mail@marekgalovic.com', password: 'galovic')
+User.create(first_name: 'Presentino', last_name: 'Admin', email: 'admin@presentino.com', password: 'password')
+
+Holiday.create([
+  {label: 'Christmas'},
+  {label: 'Easter'},
+  {label: 'Birthday'},
+  {label: 'Nameday'},
+])

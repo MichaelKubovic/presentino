@@ -9,8 +9,8 @@
 
   <body>
     <% if notice.present? or alert.present? %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
     <% end %>
     <nav class="navbar navbar-default">
       <div class="container">
@@ -26,7 +26,7 @@
           <ul class="nav navbar-nav">
             <li class="<%= current_page?(holidays_path) ? 'active' : ''%>"><a href="<%= holidays_path %>">Holidays</a></li>
             <li class="<%= current_page?(presents_path) ? 'active' : ''%>"><a href="<%= presents_path %>">Presents</a></li>
-            <li class="<%= current_page?(users_path) ? 'active' : ''%>"><a href="<%= users_path %>">Users</a></li>
+            <!-- <li class="<%= current_page?(users_path) ? 'active' : ''%>"><a href="<%= users_path %>">Users</a></li> -->
             <li></li>
           </ul>
           <button href="" class="btn btn-danger navbar-btn navbar-right">Log out</button>

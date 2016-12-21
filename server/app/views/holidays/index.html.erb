@@ -15,7 +15,9 @@
         <td>10</td>
         <td class="text-right">
           <a href="<%= edit_holiday_path(holiday) %>" class="btn btn-primary btn-xs">Edit</a>
-          <a href="" class="btn btn-danger btn-xs">Delete</a>
+          <%= form_tag holiday_path(holiday.id), method: 'delete' %>
+            <button class="btn btn-xs btn-danger">Delete</button>
+          </form>
         </td>
       </tr>
     <% end %>

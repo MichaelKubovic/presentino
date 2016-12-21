@@ -1,6 +1,6 @@
 <form action="" class="form-horizontal">
   <div class="input-group">
-    <input type="text" placeholder="Typer to search presents..." class="form-control">
+    <input type="text" name="query" value="<%= params[:query] %>" placeholder="Search presents..." class="form-control">
     <div class="input-group-btn">
       <button class="btn btn-primary">Search!</button>
     </div>
@@ -11,20 +11,22 @@
   <thead>
     <tr>
       <th>Label</th>
-      <th>Price</th>
       <th class="text-right">
         <a href="<%= new_present_path %>" class="btn btn-success btn-xs">New present</a>
       </th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>AHoj</td>
-      <td>123</td>
-      <td class="text-right">
-        <a href="" class="btn btn-primary btn-xs">Edit</a>
-        <a href="" class="btn btn-danger btn-xs">Delete</a>
-      </td>
-    </tr>
+    <% @presents.each do |present| %>
+      <tr>
+        <td><%= present.label %> </td>
+        <td class="text-right">
+          <a href="<%= edit_present_path(present) %>" class="btn btn-primary btn-xs">Edit</a>
+          <%= form_tag present_path(present.id), method: 'delete' %>
+            <button class="btn btn-xs btn-danger">Delete</button>
+          </form>
+        </td>
+      </tr>
+    <% end %>
   </tbody>
 </table>

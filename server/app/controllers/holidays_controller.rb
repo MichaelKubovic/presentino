@@ -2,7 +2,7 @@ class HolidaysController < ApplicationController
   before_action :authenticate_user!, except: [:api_index]
 
   def index
-    @holidays = Holiday.all
+    @holidays = Holiday.order('updated_at DESC').all
   end
 
   def api_index
@@ -37,6 +37,7 @@ class HolidaysController < ApplicationController
   end
 
   def destroy
+    Holiday.destroy(params[:id])
     redirect_to holidays_path
   end
 

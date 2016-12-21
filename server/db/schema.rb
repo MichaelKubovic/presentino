@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20161106000410) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["label"], name: "index_holidays_on_label"
+    t.index ["updated_at"], name: "index_holidays_on_updated_at"
   end
 
   create_table "holidays_presents", id: false, force: :cascade do |t|
@@ -30,6 +31,7 @@ ActiveRecord::Schema.define(version: 20161106000410) do
 
   create_table "present_stores", force: :cascade do |t|
     t.integer  "present_id"
+    t.string   "name",       null: false
     t.decimal  "price",      null: false
     t.string   "url",        null: false
     t.datetime "created_at", null: false
@@ -40,7 +42,6 @@ ActiveRecord::Schema.define(version: 20161106000410) do
 
   create_table "presents", force: :cascade do |t|
     t.string   "label",        null: false
-    t.decimal  "price",        null: false
     t.string   "sex",          null: false
     t.integer  "age_from",     null: false
     t.integer  "age_to",       null: false
@@ -49,7 +50,8 @@ ActiveRecord::Schema.define(version: 20161106000410) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.index ["label"], name: "index_presents_on_label"
-    t.index ["price"], name: "index_presents_on_price"
+    t.index ["sex", "age_from", "age_to"], name: "index_presents_on_sex_and_age_from_and_age_to"
+    t.index ["updated_at"], name: "index_presents_on_updated_at"
   end
 
   create_table "users", force: :cascade do |t|

@@ -7,5 +7,6 @@ class CreateHolidays < ActiveRecord::Migration[5.0]
       t.timestamps
     end
     add_index :holidays, :label
+    add_index :holidays, :updated_at
   end
 end
