@@ -25,8 +25,8 @@ class PresentsController < ApplicationController
   end
 
   def api_show
-    @present = Present.find(params[:id])
-    render json: @present.as_json.merge({present_stores: @present.present_stores})
+    @present = Present.eager_load(:present_stores).find(params[:id])
+    render json: @present.to_json(include: [:present_stores])
   end
 
   def new

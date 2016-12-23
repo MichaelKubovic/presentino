@@ -9,3 +9,42 @@
 	margin: 0 !important;
 	height: 34px;
 }
+a.item-holder,
+a.item-holder * {
+	text-decoration: none;
+}
+.item-price {
+	display: block;
+	margin-top: 10px;
+	font-size: 16px;
+}
+.show-present-image {
+	width: 100%;
+	max-height: 300px;
+	font-size: 0;
+	box-shadow: 0px 0px 8px rgba(0,0,0,.7);
+}
+.show-present-image img {
+	max-width: 100%;
+	max-height: 300px;
+	margin: 0;
+	padding: 0;
+	vertical-align: middle;
+}
+.hr-line-dashed {
+	clear: both;
+	margin: 8px 0;
+	height: 0;
+	border-bottom: 1px dashed #999;
+}
+/*
+    Form validation CSS
+*/
+.form-error {
+	font-weight: 800;
+	color: #c0392b !important;
+}
+/** Styling for the username field **/
+label.item.has-error * {  
+  color: rgba(192, 57, 43, 1.0) !important;
+}
