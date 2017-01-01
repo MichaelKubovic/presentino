@@ -34,7 +34,7 @@
   <div class="form-group">
     <% @holidays.each do |holiday| %>
       <div class="col-xs-12 col-sm-3">
-        <input type="checkbox" name="holidays[]" value="<%= holiday.id %>">
+        <input type="checkbox" name="holidays[]" value="<%= holiday.id %>" <%= @present.holidays.include?(holiday) ? 'checked' : '' %>>
         <span><%= holiday.label %></span>
       </div>
     <% end %>

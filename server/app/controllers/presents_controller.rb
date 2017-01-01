@@ -38,6 +38,7 @@ class PresentsController < ApplicationController
     t = Present.transaction do
       present = Present.create(present_params)
       present.present_stores.create(present_stores_params)
+      present.holidays << Holiday.where(id: params[:holidays]).all
     end
     if t
       redirect_to presents_path
@@ -45,7 +46,7 @@ class PresentsController < ApplicationController
   end
 
   def edit
-    @present = Present.find(params[:id])
+    @present = Present.eager_load(:holidays).find(params[:id])
     @holidays = Holiday.all
   end
 
@@ -54,8 +55,11 @@ class PresentsController < ApplicationController
     t = Present.transaction do
       present.update(present_params)
       # Crappy way to do this but I really don't have time to spend applying proper solutions on this project.
-      present.present_stores.delete_all()
+      present.present_stores.delete_all
       present.present_stores.create(present_stores_params)
+      # Crappy again
+      present.holidays.delete_all
+      present.holidays << Holiday.where(id: params[:holidays]).all
     end
     if t
       redirect_to presents_path
