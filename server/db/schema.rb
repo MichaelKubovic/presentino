@@ -12,21 +12,24 @@
 
 ActiveRecord::Schema.define(version: 20161106000410) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "holidays", force: :cascade do |t|
     t.string   "label",      null: false
     t.date     "date_from"
     t.date     "date_to"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["label"], name: "index_holidays_on_label"
-    t.index ["updated_at"], name: "index_holidays_on_updated_at"
+    t.index ["label"], name: "index_holidays_on_label", using: :btree
+    t.index ["updated_at"], name: "index_holidays_on_updated_at", using: :btree
   end
 
   create_table "holidays_presents", id: false, force: :cascade do |t|
     t.integer "holiday_id"
     t.integer "present_id"
-    t.index ["holiday_id"], name: "index_holidays_presents_on_holiday_id"
-    t.index ["present_id"], name: "index_holidays_presents_on_present_id"
+    t.index ["holiday_id"], name: "index_holidays_presents_on_holiday_id", using: :btree
+    t.index ["present_id"], name: "index_holidays_presents_on_present_id", using: :btree
   end
 
   create_table "present_stores", force: :cascade do |t|
@@ -36,8 +39,8 @@ ActiveRecord::Schema.define(version: 20161106000410) do
     t.string   "url",        null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["present_id"], name: "index_present_stores_on_present_id"
-    t.index ["price"], name: "index_present_stores_on_price"
+    t.index ["present_id"], name: "index_present_stores_on_present_id", using: :btree
+    t.index ["price"], name: "index_present_stores_on_price", using: :btree
   end
 
   create_table "presents", force: :cascade do |t|
@@ -49,9 +52,9 @@ ActiveRecord::Schema.define(version: 20161106000410) do
     t.boolean  "ml_generated"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-    t.index ["label"], name: "index_presents_on_label"
-    t.index ["sex", "age_from", "age_to"], name: "index_presents_on_sex_and_age_from_and_age_to"
-    t.index ["updated_at"], name: "index_presents_on_updated_at"
+    t.index ["label"], name: "index_presents_on_label", using: :btree
+    t.index ["sex", "age_from", "age_to"], name: "index_presents_on_sex_and_age_from_and_age_to", using: :btree
+    t.index ["updated_at"], name: "index_presents_on_updated_at", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -69,8 +72,8 @@ ActiveRecord::Schema.define(version: 20161106000410) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
 end
