@@ -59,7 +59,11 @@ function ($scope, $stateParams) {
 
 	$scope.load = function() {
 		$ionicLoading.show()
-		API.get('presents', $stateParams, function(presents, err) {
+		API.get('presents', {
+			sex: $stateParams.gender,
+			age: $stateParams.age,
+			holiday: $stateParams.holiday
+		}, function(presents, err) {
 			$ionicLoading.hide()
 			if (err)
 				alert('Error occured while loading presents, please try it later');

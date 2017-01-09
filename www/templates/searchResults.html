@@ -10,13 +10,15 @@
     <ion-list id="searchResults-list1">
       <a ng-repeat="present in presents" href="{{ '#/show/'+present.id }}" class="item-holder">
 	      <ion-item class="item-thumbnail-left" id="searchResults-list-item1">
-	        <img src="{{ present.image || 'img/unknown_present.jpg' }}" alt="present image not found">
+	        <img ng-src="{{ present.image || 'img/unknown_present.jpg' }}" alt="present image not found">
 	        <h2>{{ present.label }}</h2>
 	        <p>{{ present.description }}</p>
 	        <strong class="text-muted item-price">{{ present.price | currency:"&dollar;":2 }}</strong>
 	      </ion-item>
       </a>
     </ion-list>
+
+    <p ng-if="!presents.length" class="item-holder">Sorry, there are no presents matching your search.</p>
     
   </ion-content>
 </ion-view>

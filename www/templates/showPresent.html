@@ -9,7 +9,7 @@
     </div>
     <div class="list">
     	<a href="#" ng-click="openUrl(store.url)" class="item item-icon-right" ng-repeat="store in present.present_stores">
-    		<strong>{{ store.url | basedomain }}</strong> - {{ store.price | currency:"&dollar;":2 }}
+    		<strong>{{ store.name }}</strong> - {{ store.price | currency:"&dollar;":2 }}
 			<i class="icon ion-ios-arrow-right"></i>
     	</a>
     </div>

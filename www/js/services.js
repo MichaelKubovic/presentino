@@ -5,7 +5,7 @@ angular.module('app.services', [])
 }])
 .factory('API', function($http) {
 	let endpoint = function(path) {
-		return 'http://192.168.1.13:3000/api/'+path
+		return 'http://presentino.herokuapp.com/api/'+path
 	}
 
 	return {

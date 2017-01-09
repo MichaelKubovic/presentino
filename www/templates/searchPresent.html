@@ -24,8 +24,9 @@
           <span class="input-label">Gender</span>
           <select required ng-model="search.gender" name="gender">
             <option value="">-- Select --</option>
-            <option value="man">Man</option>
-            <option value="woman">Woman</option>
+            <option value="m">Male</option>
+            <option value="f">Female</option>
+            <option value="u">Unisex</option>
           </select>
           <p ng-show="searchForm.$submitted && searchForm.gender.$invalid" class="form-error">You have to select valid gender</p>
         </label>
