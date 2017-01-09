@@ -74,7 +74,7 @@ class PresentsController < ApplicationController
   private
 
   def present_params
-    params.permit(:label, :description, :sex, :age_from, :age_to)
+    params.permit(:label, :description, :sex, :age_from, :age_to, :image)
   end
 
   def present_stores_params
