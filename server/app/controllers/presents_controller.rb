@@ -14,11 +14,8 @@ class PresentsController < ApplicationController
     # Nested if ensures that the query always hits an index.
     if params[:sex].present?
       query = query.where(sex: params[:sex])
-      if params[:age_from].present?
-        query = query.where('age_from <= ?', params[:age_from])
-        if params[:age_to].present?
-          query = query.where('age_to <= ?', params[:age_to])
-        end
+      if params[:age].present?
+        query = query.where('age_from >= ?', params[:age]).where('age_to <= ?', params[:age])
       end
     end
     render json: query.all
