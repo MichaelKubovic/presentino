@@ -1,4 +1,10 @@
 /* Presentino css */
+.present-title {
+	border-bottom: 1px solid #eee;
+	text-align: center;
+	padding-bottom: 20px;
+}
+
 .item-input select {
 	display: block;
 	width: 100%;

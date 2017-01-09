@@ -1,8 +1,10 @@
-<ion-view title="{{ present.label }}" id="show-present">
+<ion-view title="Present detail" id="show-present">
   <ion-content padding="false" class="has-header">
     <div style="background-color: rgb(232, 235, 239); text-align: center;" class="show-present-image">
-      <img src="{{ present.image || 'img/unknown_present.jpg' }}" alt="">
+      <img ng-src="{{ present.image || 'img/unknown_present.jpg' }}" alt="">
     </div>
+    <h2 class="present-title">{{ present.label }}</h2>
+
     <div class="padding">
 	    <p ng-bind-html="present.description"></p>
 	    <h3>Stores:</h3>
