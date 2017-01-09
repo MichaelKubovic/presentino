@@ -15,7 +15,7 @@ class PresentsController < ApplicationController
     if params[:sex].present?
       query = query.where(sex: params[:sex])
       if params[:age].present?
-        query = query.where('age_from >= ?', params[:age]).where('age_to <= ?', params[:age])
+        query = query.where('age_from <= ?', params[:age]).where('age_to >= ?', params[:age])
       end
     end
     render json: query.all
