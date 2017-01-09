@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161106000410) do
+ActiveRecord::Schema.define(version: 20170109204929) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20161106000410) do
     t.boolean  "ml_generated"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.string   "image"
     t.index ["label"], name: "index_presents_on_label", using: :btree
     t.index ["sex", "age_from", "age_to"], name: "index_presents_on_sex_and_age_from_and_age_to", using: :btree
     t.index ["updated_at"], name: "index_presents_on_updated_at", using: :btree

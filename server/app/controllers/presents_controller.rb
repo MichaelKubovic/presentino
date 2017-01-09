@@ -12,6 +12,9 @@ class PresentsController < ApplicationController
   def api_index
     query = Present.order('updated_at DESC')
     # Nested if ensures that the query always hits an index.
+    if params[:holiday].present?
+      query = query.joins(:holidays).where(holidays: {id: params[:holiday]})
+    end
     if params[:sex].present?
       query = query.where(sex: params[:sex])
       if params[:age].present?
@@ -71,7 +74,7 @@ class PresentsController < ApplicationController
   private
 
   def present_params
-    params.permit(:label, :description, :sex, :age_from, :age_to)
+    params.permit(:label, :description, :sex, :age_from, :age_to, :image)
   end
 
   def present_stores_params
