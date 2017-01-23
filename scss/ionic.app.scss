@@ -14,10 +14,19 @@ $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
+$presentino:					  #db4a64;
+
+.presentino {
+	background-color: $presentino !important;
+	color: #fff !important;
+}
+.asap-logo {
+	width: 32px;
+	height: 32px;
+}
 
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
-
