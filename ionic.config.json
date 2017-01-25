@@ -1,4 +1,13 @@
 {
   "name": "presentino",
-  "app_id": "e8e11620"
+  "app_id": "e8e11620",
+  "gulpStartupTasks": [
+    "sass",
+    "watch"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/lib/**/*",
+    "!www/**/*.map"
+  ]
 }
